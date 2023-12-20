@@ -44,12 +44,6 @@ const BookFlight = () => {
     });
   };
 
-  const handleLuggageWeightChange = (event) => {
-    dispatchBooking({
-      type: "LUGGAGE_WEIGHT",
-      value: event.target.value,
-    });
-  };
   const handlePriceCalc = () => {
     dispatchBooking({
       type: "TOTAL_PRICE",
@@ -123,7 +117,7 @@ const BookFlight = () => {
             value={bookingCostState.luggagesIncluded}
           />
         </div>
-        <div className="luggageDiv">
+        {/* <div className="luggageDiv">
           Average Luggage weight{" "}
           <input
             type="number"
@@ -132,7 +126,7 @@ const BookFlight = () => {
             onChange={handleLuggageWeightChange}
             value={bookingCostState.luggageWeight}
           />
-        </div>
+        </div> */}
         <div className="mealDiv">
           Meal Type{" "}
           <select>
@@ -163,7 +157,7 @@ const BookFlight = () => {
         {bookingCostState.totalPrice !== undefined && (
           <button
             onClick={async () => {
-              console.log(flight)
+              console.log(flight);
               const success = await bookFlight(flight, bookingCostState);
               if (success) {
                 message.success("Flight booked successfully");
